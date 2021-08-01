@@ -1,12 +1,16 @@
 import React from 'react';
+import ErrorBoundry from '../error-boundry';
 import './app.css'
-import ErrorIndicator from '../error-indicator';
+
 
 const App = () =>{
+
     return(
-        <div className='jumbotron'>
-           <span>Hello I`m App</span> 
-           <ErrorIndicator/>
-        </div>)
+        <ErrorBoundry>
+            <div className='jumbotron'>
+                <span>Hello I`m App</span> 
+            </div>
+        </ErrorBoundry>
+    )
 }
 export default App
