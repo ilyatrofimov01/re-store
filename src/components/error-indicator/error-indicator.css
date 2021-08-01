@@ -1,0 +1,18 @@
+.error-indicator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h2{
+    font-size: 3rem;
+    font-family: system-ui;
+    font-weight: 300;
+}
+img{
+  width: 15%;
+  height: 15%;  
+}
+.error-indicator span {
+    font-size: 1.2rem;
+}
