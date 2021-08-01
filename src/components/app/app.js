@@ -1,16 +1,16 @@
 import React from 'react';
-import ErrorBoundry from '../error-boundry';
+import ErrorBoundary from '../error-boundary';
 import './app.css'
 
 
 const App = () =>{
 
     return(
-        <ErrorBoundry>
+        <ErrorBoundary>
             <div className='jumbotron'>
                 <span>Hello I`m App</span> 
             </div>
-        </ErrorBoundry>
+        </ErrorBoundary>
     )
 }
 export default App
