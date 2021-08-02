@@ -2,7 +2,17 @@ export default class BookstoreService {
 
 
     getBooks(){
-        return [1,2,23,412];
+        return [
+            {   id:1, 
+                title:'Production-Ready Microservices',
+                author: 'Susan J. Fowler'
+            },
+            {   id:2, 
+                title:'Release It!',
+                author: 'Michel T. Nygard'
+            },
+            
+        ];
     }
     
 }
