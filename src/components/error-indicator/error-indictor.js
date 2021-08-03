@@ -9,6 +9,7 @@ const ErrorIndicator = () =>{
             <h2 className='error'>Woops!</h2>
             <span>Something was Wrong</span>
             <span>We will fix it in near time</span>
+            
         </div>
     );
 }
