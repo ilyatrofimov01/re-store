@@ -4,16 +4,16 @@ import { connect } from 'react-redux' ;
 import {withBookstoreService} from '../hoc'
 import { fetchBooks,bookAddedtoCart } from '../../actions';
 import  compose  from '../..//utils';
-import Spiner from './../spiner';
+import Spinner from '../spinner';
 
 import './book-list.css'
 import ErrorIndicator from './../error-indicator';
 
-const BookList =({books, onAddedToCart})=>{
+const BookList = ({books, onAddedToCart}) => {
 
     return (
         <ul className="book-list ">
-            {books.map((book)=>{
+            {books.map((book) => {
                return( 
                     <li key ={book.id}>
                         <BookListItem book ={book} onAddedToCart = {()=> onAddedToCart(book.id)}/>
@@ -27,39 +27,35 @@ const BookList =({books, onAddedToCart})=>{
 
 class BookListContainer extends Component {
 
-    componentDidMount(){
+    componentDidMount () {
         this.props.fetchBooks();           
     }
     
+    render () {
+        const {books, loading, error, onAddedToCart} = this.props;
 
+        if (loading) return <Spinner />  
 
-    render (){
-        const { books,loading, error,onAddedToCart } = this.props;
-
-        if(loading){
-            return <Spiner />   
-        }
-
-        if (error){
+        if (error) {
             console.log(error);
-            return <ErrorIndicator />
-            
+            return <ErrorIndicator />   
         }
-        return (
-            <BookList books= {books} onAddedToCart={onAddedToCart}/>
-        )
+
+        return <BookList books={books} onAddedToCart={onAddedToCart}/>
     }
 }
 
-const mapStateToProps= ({books,loading, error})=>{
+const mapStateToProps = ({books,loading, error}) => {
+
    return { 
        books,
        loading,
        error
     }
 };
-const mapDispatchToProps =(dispatch, ownProps)=> {
-        const { bookstoreService} = ownProps;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const { bookstoreService } = ownProps;
+
     return  {
         fetchBooks: fetchBooks(bookstoreService, dispatch),
         onAddedToCart: (id)=> dispatch(bookAddedtoCart(id))

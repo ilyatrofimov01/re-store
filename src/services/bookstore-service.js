@@ -15,7 +15,7 @@ export default class BookstoreService {
         },
     ]
 
- getBooks(){
+    getBooks(){
         return new Promise((res,rej)=>{
             setTimeout(()=>{
                 res(this.data)
