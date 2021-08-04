@@ -5,13 +5,13 @@ import Header from '../header';
 import './app.css'
 
 
-
 const App = () =>{
  
 
     return(
         <main role ='main' className='container'>
         <Header orderedItems={5} total ={200}/>
+        
             <Switch>    
                 <Route path='/' component ={HomePage} exact/>
                 <Route path='/cart/' component ={CartPage}/> 
