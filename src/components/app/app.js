@@ -1,16 +1,20 @@
 import React, {Fragment as main} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { HomePage, CartPage } from '../pages';
+import {connect} from 'react-redux'
 import Header from '../header';
 import './app.css'
 
 
-const App = () =>{
+const App = ({cartItems,total}) =>{
  
-
+    const orderedItems = cartItems.reduce((acc,curr)=>{
+        acc = acc + curr.count;
+        return acc;
+    },0)
     return(
         <main role ='main' className='container'>
-        <Header orderedItems={5} total ={200}/>
+        <Header orderedItems={orderedItems} total ={total}/>
         
             <Switch>    
                 <Route path='/' component ={HomePage} exact/>
@@ -20,4 +24,12 @@ const App = () =>{
         </main>
     )
 }
-export default App
+
+const mapStateToProps= ({shoppingCart:{cartItems, orderTotal}}) => {
+    return{
+        cartItems,
+        total: orderTotal
+    }
+}
+
+export default connect (mapStateToProps,)(App)
